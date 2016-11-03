@@ -24,12 +24,14 @@
 		</constructor-arg>
 	</bean>
 	
+	<bean id="userExtRowMapper" class="com.easycodebox.example.core.util.jdbc.UserExtRowMapper" />
 	<util:list id="realms">
 		<ref bean="casRealm"/>
 		<bean class="com.easycodebox.login.shiro.realm.DefaultJdbcRealm"
 			p:name="jdbc"
 			p:dataSource-ref="dataSource"
 			p:authenticationQuery="SELECT * FROM user_ext WHERE id = ?"
+			p:rowMapper-ref="userExtRowMapper"
 			p:authFailMsg="您没有权限登录此系统" />
 	</util:list>
 	
