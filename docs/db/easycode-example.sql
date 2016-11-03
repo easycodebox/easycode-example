@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2016-11-03 17:15:00
+Date: 2016-11-03 21:15:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,6 +65,7 @@ CREATE TABLE `sys_partner` (
 -- ----------------------------
 -- Records of sys_partner
 -- ----------------------------
+INSERT INTO `sys_partner` VALUES ('a15b6', '云商', 'a15db6f', '', '0', '0', '0', 'contract/partner/6a59f.jpg', '  ', '1', '2015-03-24 16:25:49', '1', '2016-11-03 21:09:06');
 
 -- ----------------------------
 -- Table structure for user_ext
