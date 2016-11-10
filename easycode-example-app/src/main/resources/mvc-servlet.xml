@@ -37,6 +37,8 @@
 		</property>
 	</bean>
 	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
+	
 	<!-- freemarker的配置 -->
 	<bean id="freemarkerConfig" class="com.easycodebox.common.web.springmvc.FreeMarkerConfigurer"
 		p:freemarkerVariables-ref="properties"
