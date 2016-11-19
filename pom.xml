@@ -45,7 +45,7 @@
 	</scm>
 	
 	<properties>
-		<easycode.version>0.2.4</easycode.version>
+		<easycode.version>0.3.0-SNAPSHOT</easycode.version>
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<jstl.version>1.2</jstl.version>
 		<aspectj.version>1.8.9</aspectj.version>
