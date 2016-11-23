@@ -5,7 +5,7 @@
 	
 	<groupId>com.easycodebox</groupId>
 	<artifactId>easycode-example-parent</artifactId>
-	<version>0.3.0-SNAPSHOT</version>
+	<version>0.2.5</version>
 	
 	<packaging>pom</packaging>
 	
@@ -45,7 +45,7 @@
 	</scm>
 	
 	<properties>
-		<easycode.version>0.3.0-SNAPSHOT</easycode.version>
+		<easycode.version>0.2.5</easycode.version>
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<jstl.version>1.2</jstl.version>
 		<aspectj.version>1.8.9</aspectj.version>
