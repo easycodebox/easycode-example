@@ -9,7 +9,7 @@ public class PartnerServiceTest extends BaseTest<PartnerService> {
 
 	@Test
 	public void testLoad() {
-		log.info(bean.load("859"));
+		//log.info(bean.load("859"));
 	}
 	
 }
