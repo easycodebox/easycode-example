@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.easycodebox.auth.model.entity.user.User;
 import com.easycodebox.common.enums.entity.YesNo;
@@ -26,7 +27,7 @@ public class UserIdConverter implements IdConverter {
 	
 	public static final String USERNAME = "username";
 	
-	@Resource
+	@Autowired(required = false)
 	private UserWsService userWsService;
 	@Resource
 	private JdbcHandler jdbcHandler;
@@ -51,7 +52,7 @@ public class UserIdConverter implements IdConverter {
 				/****************************************
 				 * 注：此处应改成先去缓存中查找，缓存中没有再调用接口 	*
 				 ****************************************/
-				val = userWsService.load(id.toString());
+				val = userWsService == null ? null : userWsService.load(id.toString());
 			}
 			if (val != null && StringUtils.isNotBlank(prop)) {
 				String[] frags = prop.split("\\|\\|");
