@@ -1,23 +1,10 @@
 package com.easycodebox.example.core.service.sys.impl;
 
-import java.lang.reflect.Constructor;
-import java.util.List;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.easycodebox.common.enums.entity.YesNo;
 import com.easycodebox.common.error.BaseException;
 import com.easycodebox.common.generator.AbstractGenerator;
 import com.easycodebox.common.generator.GeneratorType;
-import com.easycodebox.common.lang.StringUtils;
 import com.easycodebox.common.lang.dto.DataPage;
-import com.easycodebox.common.lang.reflect.FieldUtils;
 import com.easycodebox.example.core.idconverter.UserIdConverter;
 import com.easycodebox.example.core.service.sys.GeneratorService;
 import com.easycodebox.example.model.entity.sys.Generator;
@@ -25,6 +12,17 @@ import com.easycodebox.example.model.util.R;
 import com.easycodebox.example.model.util.mybatis.GeneratorEnum;
 import com.easycodebox.jdbc.LockMode;
 import com.easycodebox.jdbc.support.AbstractServiceImpl;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.reflect.FieldUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import java.lang.reflect.Constructor;
+import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author WangXiaoJin
@@ -141,7 +139,7 @@ public class GeneratorServiceImpl extends AbstractServiceImpl<Generator> impleme
 			}
 		}
 		AbstractGenerator ag = generatorType.getGenerator();
-		boolean updateDbCurrentVal = ag == null || ag.getGenNum() >= ag.getFetchSize() ? true : false;
+		boolean updateDbCurrentVal = ag == null || ag.getGenNum() >= ag.getFetchSize();
 		if(ag == null) {
 	    	ag = generatorType.getRawGenerator();
 	    	generatorType.setGenerator(ag);

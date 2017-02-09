@@ -1,18 +1,16 @@
 package com.easycodebox.example.core.idconverter;
 
-import java.lang.reflect.InvocationTargetException;
-
-import javax.annotation.Resource;
-
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.easycodebox.auth.model.entity.user.User;
 import com.easycodebox.common.enums.entity.YesNo;
 import com.easycodebox.common.tag.IdConverter;
 import com.easycodebox.jdbc.support.JdbcHandler;
 import com.easycodebox.login.ws.UserWsService;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.Resource;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * 用户ID转换器
@@ -70,7 +68,7 @@ public class UserIdConverter implements IdConverter {
 						}
 						if (newVal != null)
 							break;
-					} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+					} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ignored) {
 						
 					}
 				}

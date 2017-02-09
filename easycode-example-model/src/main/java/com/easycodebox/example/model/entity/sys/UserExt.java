@@ -1,12 +1,9 @@
 package com.easycodebox.example.model.entity.sys;
 
-import java.math.BigDecimal;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import com.easycodebox.jdbc.entity.AbstractOperateEntity;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * 用户扩展信息 - 基于权限系统u_user表的扩展信息
@@ -17,8 +14,6 @@ import com.easycodebox.jdbc.entity.AbstractOperateEntity;
 @Table(name="user_ext")
 public class UserExt extends AbstractOperateEntity {
 
-	private static final long serialVersionUID = 5454155825314635342L;
-	
 	/**
 	 * 主键
 	 */

@@ -1,14 +1,13 @@
 package com.easycodebox.example.core.util.test;
 
-import java.util.concurrent.locks.ReentrantLock;
-
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.easycodebox.common.lang.reflect.ClassUtils;
+import com.easycodebox.common.lang.reflect.Classes;
 import com.easycodebox.common.log.logback.LocateLogger;
 import com.easycodebox.common.spring.ApplicationContextFactory;
 import com.easycodebox.common.spring.BeanFactory;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.concurrent.locks.ReentrantLock;
 
 public class BaseTest<T> extends LocateLogger {
 	
@@ -23,8 +22,8 @@ public class BaseTest<T> extends LocateLogger {
 	
 	@SuppressWarnings("resource")
 	public void initContext() {
-		/**
-		 * 当同时执行N个test方法时，此类会被执行N次，但这N个实例会共享Spring上下文环境，所以下面的方法只能执行一次
+		/*
+		  当同时执行N个test方法时，此类会被执行N次，但这N个实例会共享Spring上下文环境，所以下面的方法只能执行一次
 		 */
 		if(ApplicationContextFactory.newInstance() == null) {
 			lock.lock();
@@ -45,7 +44,7 @@ public class BaseTest<T> extends LocateLogger {
 	@SuppressWarnings("unchecked")
 	public void initBean() {
 		try {
-			bean = (T)BeanFactory.getBean(ClassUtils.getSuperClassGenricType(getClass()));
+			bean = (T)BeanFactory.getBean(Classes.getSuperClassGenricType(getClass()));
 		} catch (Exception e) {
 			if(e.getClass() != NoSuchBeanDefinitionException.class)
 				log.error("run error!!!", e);
