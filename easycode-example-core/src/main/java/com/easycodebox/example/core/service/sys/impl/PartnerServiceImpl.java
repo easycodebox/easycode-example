@@ -1,12 +1,5 @@
 package com.easycodebox.example.core.service.sys.impl;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.easycodebox.common.enums.entity.OpenClose;
 import com.easycodebox.common.enums.entity.YesNo;
 import com.easycodebox.common.generator.Generators;
@@ -19,6 +12,11 @@ import com.easycodebox.example.model.entity.sys.Partner;
 import com.easycodebox.example.model.util.R;
 import com.easycodebox.example.model.util.mybatis.GeneratorEnum;
 import com.easycodebox.jdbc.support.AbstractServiceImpl;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author WangXiaoJin
@@ -79,12 +77,11 @@ public class PartnerServiceImpl extends AbstractServiceImpl<Partner> implements 
 		}
 		
 		return super.update(sql()
-				.updateNeed(R.Partner.name, partner.getName())
-				.updateNeed(R.Partner.website, partner.getWebsite())
-				//.update(R.Partner.status, partner.getStatus())
-				.updateNeed(R.Partner.sort, partner.getSort())
-				.updateNeed(R.Partner.contract, partner.getContract())
-				.updateNeed(R.Partner.remark, partner.getRemark())
+				.upd(R.Partner.name, partner.getName())
+				.upd(R.Partner.website, partner.getWebsite())
+				.upd(R.Partner.sort, partner.getSort())
+				.upd(R.Partner.contract, partner.getContract())
+				.upd(R.Partner.remark, partner.getRemark())
 				.eqAst(R.Partner.id, partner.getId()));
 	}
 
