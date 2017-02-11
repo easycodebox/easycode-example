@@ -1,10 +1,5 @@
 package com.easycodebox.example.app.controller.sys;
 
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.easycodebox.common.enums.entity.OpenClose;
 import com.easycodebox.common.error.CodeMsg;
 import com.easycodebox.common.lang.dto.DataPage;
@@ -15,6 +10,10 @@ import com.easycodebox.example.core.idconverter.UserIdConverter;
 import com.easycodebox.example.core.service.sys.PartnerService;
 import com.easycodebox.example.core.util.CodeMsgExt;
 import com.easycodebox.example.model.entity.sys.Partner;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * @author WangXiaoJin
@@ -37,7 +36,7 @@ public class PartnerController extends BaseController {
 				partner.getWebsite(), partner.getStatus(), 
 				dataPage.getPageNo(), dataPage.getPageSize());
 		for (Partner item : data.getData()) {
-			item.setCreatorName(userIdConverter.id2RealOrNickname(item.getCreator()));
+			item.setCreatorName(userIdConverter.idToRealOrNickname(item.getCreator()));
 		}
 		return none(data);
 	}
