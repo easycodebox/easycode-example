@@ -128,10 +128,21 @@
 
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource" />
-
-	<bean id="sqlSessionFactory" class="com.easycodebox.jdbc.mybatis.spring.MyBatisSqlSessionFactoryBean"
-		p:dataSource-ref="dataSource"
-		p:configLocation="classpath:mybatis-config.xml" />
+	
+	<!-- 配置MyBatis -->
+	<!--
+		autoMappingBehavior=FULL : 查询结果支持嵌套属性赋值,默认不支持（PARTIAL）
+	-->
+	<bean id="ibatisConfiguration" class="com.easycodebox.jdbc.mybatis.DefaultConfiguration"
+	      p:lazyLoadingEnabled="false"
+	      p:cacheEnabled="false"
+	      p:autoMappingBehavior="FULL"/>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+	      p:dataSource-ref="dataSource"
+	      p:configuration-ref="ibatisConfiguration"
+	      p:typeAliasesPackage="com.easycodebox.auth.model.entity"
+	      p:typeHandlersPackage="com.easycodebox.auth.model.util.mybatis"
+	      p:mapperLocations="classpath:CommonMapper.xml"/>
 
 	<bean id="sqlSessionTemplate" class="com.easycodebox.jdbc.mybatis.spring.DefaultSqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
