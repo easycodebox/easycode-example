@@ -1,4 +1,4 @@
-package com.easycodebox.example.model.util.mybatis;
+package com.easycodebox.example.model.util;
 
 import com.easycodebox.example.model.enums.GeneratorEnum;
 

@@ -2,7 +2,7 @@ package com.easycodebox.example.model.entity.sys;
 
 import com.easycodebox.common.enums.entity.OpenClose;
 import com.easycodebox.common.enums.entity.YesNo;
-import com.easycodebox.example.model.util.mybatis.GeneratedValue;
+import com.easycodebox.example.model.util.GeneratedValue;
 import com.easycodebox.example.model.enums.GeneratorEnum;
 import com.easycodebox.jdbc.entity.AbstractOperateEntity;
 
