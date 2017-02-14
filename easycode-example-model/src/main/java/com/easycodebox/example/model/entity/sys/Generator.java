@@ -1,7 +1,7 @@
 package com.easycodebox.example.model.entity.sys;
 
 import com.easycodebox.common.enums.entity.YesNo;
-import com.easycodebox.example.model.util.mybatis.GeneratorEnum;
+import com.easycodebox.example.model.enums.GeneratorEnum;
 import com.easycodebox.jdbc.entity.AbstractOperateEntity;
 
 import javax.persistence.*;

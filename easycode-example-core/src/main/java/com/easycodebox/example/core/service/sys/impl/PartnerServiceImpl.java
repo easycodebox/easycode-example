@@ -10,7 +10,7 @@ import com.easycodebox.example.core.service.sys.PartnerService;
 import com.easycodebox.example.core.util.CodeMsgExt;
 import com.easycodebox.example.model.entity.sys.Partner;
 import com.easycodebox.example.model.util.R;
-import com.easycodebox.example.model.util.mybatis.GeneratorEnum;
+import com.easycodebox.example.model.enums.GeneratorEnum;
 import com.easycodebox.jdbc.support.AbstractServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

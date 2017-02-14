@@ -9,7 +9,7 @@ import com.easycodebox.common.web.BaseController;
 import com.easycodebox.example.core.idconverter.UserIdConverter;
 import com.easycodebox.example.core.service.sys.GeneratorService;
 import com.easycodebox.example.model.entity.sys.Generator;
-import com.easycodebox.example.model.util.mybatis.GeneratorEnum;
+import com.easycodebox.example.model.enums.GeneratorEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 

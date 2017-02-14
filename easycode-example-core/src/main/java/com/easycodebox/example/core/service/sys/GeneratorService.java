@@ -6,7 +6,7 @@ import com.easycodebox.common.enums.entity.YesNo;
 import com.easycodebox.common.generator.GenerateProcess;
 import com.easycodebox.common.lang.dto.DataPage;
 import com.easycodebox.example.model.entity.sys.Generator;
-import com.easycodebox.example.model.util.mybatis.GeneratorEnum;
+import com.easycodebox.example.model.enums.GeneratorEnum;
 
 /**
  * @author WangXiaoJin
