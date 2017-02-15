@@ -2,8 +2,8 @@ package com.easycodebox.example.model.entity.sys;
 
 import com.easycodebox.common.enums.entity.OpenClose;
 import com.easycodebox.common.enums.entity.YesNo;
-import com.easycodebox.common.generator.GeneratedValue;
-import com.easycodebox.example.model.enums.GeneratorEnum;
+import com.easycodebox.common.idgenerator.IdGeneratedValue;
+import com.easycodebox.example.model.enums.IdGeneratorEnum;
 import com.easycodebox.jdbc.entity.AbstractOperateEntity;
 
 import javax.persistence.*;
@@ -21,7 +21,7 @@ public class Partner extends AbstractOperateEntity {
 	 * 主键
 	 */
 	@Id
-	@GeneratedValue(type = GeneratorEnum.class, key = "PARTNER_ID")
+	@IdGeneratedValue(type = IdGeneratorEnum.class, key = "PARTNER_ID")
 	private String id;
 	
 	/**

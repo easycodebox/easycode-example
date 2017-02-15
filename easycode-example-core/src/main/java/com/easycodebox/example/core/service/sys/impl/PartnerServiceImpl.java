@@ -2,7 +2,7 @@ package com.easycodebox.example.core.service.sys.impl;
 
 import com.easycodebox.common.enums.entity.OpenClose;
 import com.easycodebox.common.enums.entity.YesNo;
-import com.easycodebox.common.generator.Generators;
+import com.easycodebox.common.idgenerator.IdGenerators;
 import com.easycodebox.common.lang.dto.DataPage;
 import com.easycodebox.common.validate.Assert;
 import com.easycodebox.example.core.idconverter.UserIdConverter;
@@ -10,7 +10,7 @@ import com.easycodebox.example.core.service.sys.PartnerService;
 import com.easycodebox.example.core.util.CodeMsgExt;
 import com.easycodebox.example.model.entity.sys.Partner;
 import com.easycodebox.example.model.util.R;
-import com.easycodebox.example.model.enums.GeneratorEnum;
+import com.easycodebox.example.model.enums.IdGeneratorEnum;
 import com.easycodebox.jdbc.support.AbstractServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,7 +57,7 @@ public class PartnerServiceImpl extends AbstractServiceImpl<Partner> implements 
 		Assert.isFalse(this.existName(partner.getName(), partner.getId()),
 				CodeMsgExt.FAIL.msg("合作商名{0}已被占用", partner.getName()));
 		
-		partner.setPartnerKey((String)Generators.getGeneratorNextVal(GeneratorEnum.KEY));
+		partner.setPartnerKey((String) IdGenerators.nextVal(IdGeneratorEnum.KEY));
 		if(partner.getStatus() == null)
 			partner.setStatus(OpenClose.OPEN);
 		if(partner.getSort() == null)
