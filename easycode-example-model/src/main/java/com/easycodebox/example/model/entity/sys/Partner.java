@@ -2,7 +2,7 @@ package com.easycodebox.example.model.entity.sys;
 
 import com.easycodebox.common.enums.entity.OpenClose;
 import com.easycodebox.common.enums.entity.YesNo;
-import com.easycodebox.example.model.util.GeneratedValue;
+import com.easycodebox.common.generator.GeneratedValue;
 import com.easycodebox.example.model.enums.GeneratorEnum;
 import com.easycodebox.jdbc.entity.AbstractOperateEntity;
 
@@ -21,7 +21,7 @@ public class Partner extends AbstractOperateEntity {
 	 * 主键
 	 */
 	@Id
-	@GeneratedValue(GeneratorEnum.PARTNER_ID)
+	@GeneratedValue(type = GeneratorEnum.class, key = "PARTNER_ID")
 	private String id;
 	
 	/**
