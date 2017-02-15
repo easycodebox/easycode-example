@@ -54,11 +54,6 @@
 	<bean id="staticValueProcessor" class="com.easycodebox.common.processor.StaticValueProcessor"
 	      init-method="process" lazy-init="false" depends-on="exePropertyPlaceholder">
 		<property name="properties" ref="properties"/>
-		<property name="packagesToScan">
-			<list>
-				<value>com.easycodebox.example.model.bo</value>
-			</list>
-		</property>
 		<property name="classes">
 			<list>
 				<value>com.easycodebox.example.core.util.Constants</value>
@@ -84,7 +79,6 @@
 		<property name="packagesToScan">
 			<list>
 				<value>com.easycodebox.example.model.enums</value>
-				<value>com.easycodebox.example.model.util.mybatis</value>
 				<value>com.easycodebox.common.enums.entity</value>
 			</list>
 		</property>
