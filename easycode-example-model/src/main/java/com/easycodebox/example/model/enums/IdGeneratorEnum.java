@@ -52,7 +52,12 @@ public enum IdGeneratorEnum implements DetailEnum<String>, IdGeneratorType {
 	public String getValue() {
 		return value;
 	}
-
+	
+	@Override
+	public String getPersistentKey() {
+		return getValue();
+	}
+	
 	@Override
 	@SuppressWarnings("rawtypes")
 	public AbstractIdGenerator getRawIdGenerator() {
