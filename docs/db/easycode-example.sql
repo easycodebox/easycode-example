@@ -16,11 +16,11 @@ Date: 2016-11-03 21:15:47
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for sys_generator
+-- Table structure for sys_id_generator
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_generator`;
-CREATE TABLE `sys_generator` (
-  `generatorType` varchar(32) NOT NULL COMMENT '类型 - 主键生成器类型',
+DROP TABLE IF EXISTS `sys_id_generator`;
+CREATE TABLE `sys_id_generator` (
+  `id` varchar(32) NOT NULL COMMENT '类型 - 主键生成器类型',
   `initialVal` varchar(32) NOT NULL COMMENT '初始值',
   `currentVal` varchar(32) NOT NULL COMMENT '当前值',
   `maxVal` varchar(32) DEFAULT NULL COMMENT '最大值',
@@ -31,15 +31,15 @@ CREATE TABLE `sys_generator` (
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `modifier` varchar(32) NOT NULL COMMENT '修改人',
   `modifyTime` datetime NOT NULL COMMENT '修改时间',
-  PRIMARY KEY (`generatorType`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='主键生成器 - 主键生成器';
 
 -- ----------------------------
--- Records of sys_generator
+-- Records of sys_id_generator
 -- ----------------------------
-INSERT INTO `sys_generator` VALUES ('img_name', 'a15b6', 'a15b6', null, '500', '1', '0', '0', '2015-10-13 08:40:41', '1', '2016-09-30 16:09:54');
-INSERT INTO `sys_generator` VALUES ('key', 'a15db6f', 'a15gglr', null, '500', '49', '0', '1', '2015-03-24 16:25:49', '1', '2016-09-29 23:34:08');
-INSERT INTO `sys_generator` VALUES ('partner_id', 'a15b6', 'a4xvu', null, '500', '59', '1', '1', '2015-03-24 16:25:49', '1', '2016-09-29 23:34:08');
+INSERT INTO `sys_id_generator` VALUES ('img_name', 'a15b6', 'a15b6', null, '500', '1', '0', '0', '2015-10-13 08:40:41', '1', '2016-09-30 16:09:54');
+INSERT INTO `sys_id_generator` VALUES ('key', 'a15db6f', 'a15gglr', null, '500', '49', '0', '1', '2015-03-24 16:25:49', '1', '2016-09-29 23:34:08');
+INSERT INTO `sys_id_generator` VALUES ('partner_id', 'a15b6', 'a4xvu', null, '500', '59', '1', '1', '2015-03-24 16:25:49', '1', '2016-09-29 23:34:08');
 
 -- ----------------------------
 -- Table structure for sys_partner
