@@ -2,11 +2,11 @@ package com.easycodebox.example.app.controller.sys;
 
 import com.easycodebox.common.enums.entity.OpenClose;
 import com.easycodebox.common.error.CodeMsg;
+import com.easycodebox.common.idconverter.UserIdConverter;
 import com.easycodebox.common.lang.dto.DataPage;
 import com.easycodebox.common.validate.Assert;
 import com.easycodebox.common.validate.Validators;
 import com.easycodebox.common.web.BaseController;
-import com.easycodebox.example.core.idconverter.UserIdConverter;
 import com.easycodebox.example.core.service.sys.PartnerService;
 import com.easycodebox.example.core.util.CodeMsgExt;
 import com.easycodebox.example.model.entity.sys.Partner;

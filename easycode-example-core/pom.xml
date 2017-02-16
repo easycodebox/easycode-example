@@ -21,6 +21,10 @@
 			<groupId>com.easycodebox</groupId>
 			<artifactId>easycode-login</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.easycodebox</groupId>
+			<artifactId>easycode-idgenerator</artifactId>
+		</dependency>
 		<!-- 第三方jar包 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

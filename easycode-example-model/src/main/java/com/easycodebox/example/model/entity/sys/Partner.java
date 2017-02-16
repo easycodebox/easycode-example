@@ -2,8 +2,8 @@ package com.easycodebox.example.model.entity.sys;
 
 import com.easycodebox.common.enums.entity.OpenClose;
 import com.easycodebox.common.enums.entity.YesNo;
-import com.easycodebox.common.idgenerator.IdGeneratedValue;
 import com.easycodebox.example.model.enums.IdGeneratorEnum;
+import com.easycodebox.common.idgenerator.IdGeneratedValue;
 import com.easycodebox.jdbc.entity.AbstractOperateEntity;
 
 import javax.persistence.*;

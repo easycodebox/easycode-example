@@ -4,8 +4,8 @@ import com.easycodebox.common.enums.DetailEnum;
 import com.easycodebox.common.enums.entity.YesNo;
 import com.easycodebox.common.idgenerator.AbstractIdGenerator;
 import com.easycodebox.common.idgenerator.IdGeneratorType;
-import com.easycodebox.common.idgenerator.impl.AlphaNumericIdGenerator;
-import com.easycodebox.common.idgenerator.impl.UuidGenerator;
+import com.easycodebox.common.idgenerator.support.AlphaNumericIdGenerator;
+import com.easycodebox.common.idgenerator.support.UuidGenerator;
 
 /**
  * @author WangXiaoJin

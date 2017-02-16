@@ -1,9 +1,9 @@
 package com.easycodebox.example.model.util;
 
-import static com.easycodebox.jdbc.Property.instance;
-
 import com.easycodebox.jdbc.Property;
 import com.easycodebox.jdbc.entity.Entity;
+
+import static com.easycodebox.jdbc.Property.instance;
 
 /**
  * <b>直接运行{@link com.easycodebox.jdbc.res.GenerateBeanRes}类会自动生成R文件的。</b>
@@ -15,26 +15,6 @@ import com.easycodebox.jdbc.entity.Entity;
  */
 public class R {
 
-	public static class Generator {
-	
-		private static final Class<? extends Entity> entity = com.easycodebox.example.model.entity.sys.Generator.class;
-		public static final Property 
-			generatorType = instance("generatorType", entity),
-			initialVal = instance("initialVal", entity),
-			currentVal = instance("currentVal", entity),
-			maxVal = instance("maxVal", entity),
-			fetchSize = instance("fetchSize", entity),
-			increment = instance("increment", entity),
-			isCycle = instance("isCycle", entity),
-			creator = instance("creator", entity),
-			createTime = instance("createTime", entity),
-			modifier = instance("modifier", entity),
-			modifyTime = instance("modifyTime", entity),
-			creatorName = instance("creatorName", entity),
-			modifierName = instance("modifierName", entity);
-	
-	}
-	
 	public static class Partner {
 	
 		private static final Class<? extends Entity> entity = com.easycodebox.example.model.entity.sys.Partner.class;
