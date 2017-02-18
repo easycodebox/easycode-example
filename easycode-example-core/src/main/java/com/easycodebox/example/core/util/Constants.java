@@ -16,5 +16,18 @@ public class Constants extends BaseConstants {
 	 * 批量删除缓存的KeyGenerator bean name
 	 */
 	public static final String MULTI_KEY_GENERATOR = "multiKeyGenerator";
+	/**
+	 * CacheName的缩写
+	 */
+	public static final class CN {
+
+		public static final String PREFIX = "example:";
+		
+		/**
+		 * key:partnerId value:partner
+		 */
+		public static final String PARTNER = PREFIX + "partner";
+		
+	}
 	
 }

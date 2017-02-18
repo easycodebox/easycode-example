@@ -3,15 +3,18 @@ package com.easycodebox.example.core.service.sys.impl;
 import com.easycodebox.common.enums.entity.OpenClose;
 import com.easycodebox.common.enums.entity.YesNo;
 import com.easycodebox.common.idconverter.UserIdConverter;
+import com.easycodebox.common.idgenerator.IdGenerators;
 import com.easycodebox.common.lang.dto.DataPage;
 import com.easycodebox.common.validate.Assert;
 import com.easycodebox.example.core.service.sys.PartnerService;
 import com.easycodebox.example.core.util.CodeMsgExt;
+import com.easycodebox.example.core.util.Constants;
 import com.easycodebox.example.model.entity.sys.Partner;
 import com.easycodebox.example.model.enums.IdGeneratorEnum;
 import com.easycodebox.example.model.util.R;
-import com.easycodebox.common.idgenerator.IdGenerators;
 import com.easycodebox.jdbc.support.AbstractServiceImpl;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +41,7 @@ public class PartnerServiceImpl extends AbstractServiceImpl<Partner> implements 
 	}
 
 	@Override
+	@Cacheable(Constants.CN.PARTNER)
 	public Partner load(String id) {
 		Partner data = super.get(sql()
 				.eqAst(R.Partner.id, id)
@@ -68,6 +72,8 @@ public class PartnerServiceImpl extends AbstractServiceImpl<Partner> implements 
 	}
 	
 	@Override
+	@Transactional
+	@CacheEvict(cacheNames=Constants.CN.PARTNER, key="#partner.id")
 	public int update(Partner partner) {
 		Assert.isFalse(this.existName(partner.getName(), partner.getId()),
 				CodeMsgExt.FAIL.msg("合作商名{0}已被占用", partner.getName()));
@@ -86,11 +92,15 @@ public class PartnerServiceImpl extends AbstractServiceImpl<Partner> implements 
 	}
 
 	@Override
+	@Transactional
+	@CacheEvict(cacheNames=Constants.CN.PARTNER, keyGenerator= Constants.MULTI_KEY_GENERATOR)
 	public int remove(String[] ids) {
 		return super.delete(ids);
 	}
 	
 	@Override
+	@Transactional
+	@CacheEvict(cacheNames=Constants.CN.PARTNER, keyGenerator=Constants.MULTI_KEY_GENERATOR)
 	public int removePhy(String[] ids) {
 		return super.deletePhy(ids);
 	}
@@ -119,6 +129,8 @@ public class PartnerServiceImpl extends AbstractServiceImpl<Partner> implements 
 	}
 	
 	@Override
+	@Transactional
+	@CacheEvict(cacheNames=Constants.CN.PARTNER, keyGenerator=Constants.MULTI_KEY_GENERATOR)
 	public int openClose(String[] ids, OpenClose status) {
 		return super.updateStatus(ids, status);
 	}

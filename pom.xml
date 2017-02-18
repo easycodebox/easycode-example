@@ -45,12 +45,11 @@
 	</scm>
 	
 	<properties>
-		<easycode.version>0.2.5</easycode.version>
-		<spring.version>4.2.4.RELEASE</spring.version>
+		<spring.version>4.3.5.RELEASE</spring.version>
 		<jstl.version>1.2</jstl.version>
 		<aspectj.version>1.8.9</aspectj.version>
 		<jdk.version>1.7</jdk.version>
-		<junit.version>4.10</junit.version>
+		<junit.version>4.12</junit.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
@@ -61,6 +60,10 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
 	</dependencies>
 	
 	<dependencyManagement>
@@ -69,17 +72,17 @@
 			<dependency>
 				<groupId>com.easycodebox</groupId>
 				<artifactId>easycode-jdbc-mybatis</artifactId>
-				<version>${easycode.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.easycodebox</groupId>
 				<artifactId>easycode-login</artifactId>
-				<version>${easycode.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.easycodebox</groupId>
 				<artifactId>easycode-idgenerator</artifactId>
-				<version>${easycode.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
