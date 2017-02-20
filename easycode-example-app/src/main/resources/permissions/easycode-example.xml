@@ -3,21 +3,21 @@
 	
 	<menu1 name="系统管理" icon="fa fa-cogs">
 		
-		<menu2 name="生成策略管理" url="idGenerator" description="生成策略管理页面">
+		<menu2 name="生成策略管理" url="/idGenerator" description="生成策略管理页面">
 			<permissions>
-				<permission name="生成策略列表" url="idGenerator/list" description="生成策略列表" />
-				<permission name="生成策略详情" url="idGenerator/load" description="生成策略详情" />
-				<permission name="修改生成策略" url="idGenerator/update" description="修改生成策略" />
+				<permission name="生成策略列表" url="/idGenerator/list" description="生成策略列表" />
+				<permission name="生成策略详情" url="/idGenerator/load" description="生成策略详情" />
+				<permission name="修改生成策略" url="/idGenerator/update" description="修改生成策略" />
 			</permissions>
 		</menu2>
 		
-		<menu2 name="合作商管理" url="partner" description="合作商管理页面">
+		<menu2 name="合作商管理" url="/partner" description="合作商管理页面">
 			<permissions>
-				<permission name="合作商列表" url="partner/list" description="合作商列表" />
-				<permission name="合作商详情" url="partner/load" description="合作商详情" />
-				<permission name="修改合作商" url="partner/update" description="修改合作商" />
-				<permission name="删除合作商" url="partner/remove" description="删除合作商" />
-				<permission name="启用/禁用合作商" url="partner/openClose" description="启用/禁用合作商" />
+				<permission name="合作商列表" url="/partner/list" description="合作商列表" />
+				<permission name="合作商详情" url="/partner/load" description="合作商详情" />
+				<permission name="修改合作商" url="/partner/update" description="修改合作商" />
+				<permission name="删除合作商" url="/partner/remove" description="删除合作商" />
+				<permission name="启用/禁用合作商" url="/partner/openClose" description="启用/禁用合作商" />
 			</permissions>
 		</menu2>
 		
