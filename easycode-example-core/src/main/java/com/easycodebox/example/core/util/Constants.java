@@ -1,12 +1,10 @@
 package com.easycodebox.example.core.util;
 
-import com.easycodebox.common.BaseConstants;
-
 /**
  * @author WangXiaoJin
  * 
  */
-public class Constants extends BaseConstants {
+public class Constants {
 	
 	/**
 	 * 混合存储缓存的KeyGenerator bean name
