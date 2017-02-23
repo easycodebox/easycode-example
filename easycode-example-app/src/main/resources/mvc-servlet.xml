@@ -93,7 +93,7 @@
 	      class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<set>
-				<bean class="com.easycodebox.common.web.springmvc.StringToEnumConverterFactory"/>
+				<bean class="com.easycodebox.common.spring.StringToEnumConverterFactory"/>
 			</set>
 		</property>
 		<property name="formatters">
