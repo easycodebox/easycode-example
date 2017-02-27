@@ -13,22 +13,22 @@ import com.easycodebox.example.model.entity.sys.Partner;
 import com.easycodebox.example.model.enums.IdGeneratorEnum;
 import com.easycodebox.example.model.util.R;
 import com.easycodebox.jdbc.support.AbstractServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * @author WangXiaoJin
  *
  */
-@Service("partnerService")
+@Service
 public class PartnerServiceImpl extends AbstractServiceImpl<Partner> implements PartnerService {
 
-	@Resource
+	@Autowired
 	private UserIdConverter userIdConverter;
 	
 	@Override

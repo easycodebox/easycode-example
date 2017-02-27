@@ -1,14 +1,12 @@
 package com.easycodebox.example.app.controller.user;
 
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.easycodebox.common.error.CodeMsg;
 import com.easycodebox.common.security.SecurityUtils;
 import com.easycodebox.common.web.BaseController;
 import com.easycodebox.login.ws.UserWsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author WangXiaoJin
@@ -17,7 +15,7 @@ import com.easycodebox.login.ws.UserWsService;
 @Controller
 public class UserController extends BaseController {
 	
-	@Resource
+	@Autowired
 	private UserWsService userWsService;
 
 	/**

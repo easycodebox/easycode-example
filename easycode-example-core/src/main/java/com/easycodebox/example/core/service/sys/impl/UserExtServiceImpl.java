@@ -10,7 +10,7 @@ import com.easycodebox.jdbc.support.AbstractServiceImpl;
  * @author WangXiaoJin
  *
  */
-@Service("userExtService")
+@Service
 public class UserExtServiceImpl extends AbstractServiceImpl<UserExt> implements UserExtService {
 
 	@Override
