@@ -4,11 +4,18 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>
+			org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+		</param-value>
+	</context-param>
+	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath:ws-client.xml,
-			classpath:shiro.xml,
-			classpath:core.xml
+			com.easycodebox.login.config.WsClientConfig
+			com.easycodebox.example.core.config.CoreConfig
+			com.easycodebox.login.config.ShiroConfig
+			com.easycodebox.example.app.config.ShiroCustomConfig
         </param-value>
 	</context-param>
 	<context-param>
@@ -116,9 +123,15 @@
 		<servlet-name>SpringMVC</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
+			<param-name>contextClass</param-name>
+			<param-value>
+				org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+			</param-value>
+		</init-param>
+		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				classpath*:mvc-*.xml
+				com.easycodebox.auth.backend.config.ServletConfig
 			</param-value>
 		</init-param>
 	</servlet>
