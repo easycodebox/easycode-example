@@ -1,6 +1,5 @@
 package com.easycodebox.example.app.config;
 
-import com.easycodebox.example.core.util.jdbc.UserExtRowMapper;
 import com.easycodebox.login.shiro.realm.DefaultJdbcRealm;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +21,6 @@ public class ShiroCustomConfig {
 		realm.setName("jdbc");
 		realm.setDataSource(dataSource);
 		realm.setAuthenticationQuery("SELECT * FROM user_ext WHERE id = ?");
-		realm.setRowMapper(new UserExtRowMapper());
 		realm.setAuthFailMsg("此账号在easycode-example-app项目中没有激活");
 		return realm;
 	}

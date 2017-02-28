@@ -26,14 +26,12 @@
 	
 	<!-- 下面为身份的二次校验。使用场景：登录某个子系统时，必须在此子系统中激活 -->
 	<!-- 
-	<bean id="userExtRowMapper" class="com.easycodebox.example.core.util.jdbc.UserExtRowMapper" />
 	<util:list id="realms">
 		<ref bean="casRealm"/>
 		<bean class="com.easycodebox.login.shiro.realm.DefaultJdbcRealm"
 			p:name="jdbc"
 			p:dataSource-ref="dataSource"
 			p:authenticationQuery="SELECT * FROM user_ext WHERE id = ?"
-			p:rowMapper-ref="userExtRowMapper"
 			p:authFailMsg="此账号在easycode-example-app项目中没有激活" />
 	</util:list>
 	 -->
