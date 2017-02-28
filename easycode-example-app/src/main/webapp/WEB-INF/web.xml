@@ -131,7 +131,7 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				com.easycodebox.auth.backend.config.ServletConfig
+				com.easycodebox.example.app.config.ServletConfig
 			</param-value>
 		</init-param>
 	</servlet>
