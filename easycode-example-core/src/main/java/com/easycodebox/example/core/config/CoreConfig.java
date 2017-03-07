@@ -14,6 +14,7 @@ import com.easycodebox.common.lang.Symbol;
 import com.easycodebox.common.spring.ApplicationContextFactory;
 import com.easycodebox.common.spring.StringToEnumConverterFactory;
 import com.easycodebox.example.core.idconverter.DefaultUserIdConverter;
+import com.easycodebox.example.core.util.Constants;
 import com.easycodebox.jdbc.config.ConfigEntityBean;
 import com.easycodebox.jdbc.mybatis.*;
 import com.easycodebox.jdbc.mybatis.spring.DefaultSqlSessionFactoryBean;
@@ -28,6 +29,7 @@ import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.*;
@@ -53,7 +55,8 @@ import java.util.*;
 		basePackages = {
 				"com.easycodebox.example.core",
 				"com.easycodebox.idgenerator.service"
-		}
+		},
+		excludeFilters = @Filter(Configuration.class)
 )
 @PropertySource(ignoreResourceNotFound = true, value = {
 		"classpath:core.properties",
@@ -193,6 +196,7 @@ public class CoreConfig {
 	 * filters ==> 配置监控统计拦截的filters <p/>
 	 * connectionProperties ==> config.decrypt用于解密数据库密码 <p/>
 	 */
+	@Profile("!" + Constants.INTEGRATION_TEST_KEY)
 	@Bean(initMethod = "init", destroyMethod = "close")
 	public DruidDataSource dataSource() throws SQLException {
 		DruidDataSource dataSource = new DruidDataSource();
