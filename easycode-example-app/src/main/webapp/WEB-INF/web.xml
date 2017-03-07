@@ -14,6 +14,7 @@
 		<param-value>
 			com.easycodebox.login.config.WsClientConfig
 			com.easycodebox.example.core.config.CoreConfig
+			com.easycodebox.example.core.config.ServletConfig
 			com.easycodebox.login.config.ShiroConfig
 			com.easycodebox.example.app.config.ShiroCustomConfig
         </param-value>
@@ -131,7 +132,7 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				com.easycodebox.example.app.config.ServletConfig
+				com.easycodebox.example.app.config.SpringMvcConfig
 			</param-value>
 		</init-param>
 	</servlet>

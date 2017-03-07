@@ -31,7 +31,7 @@ import java.util.Map;
 		"com.easycodebox.example.app.controller",
 		"com.easycodebox.idgenerator.controller"
 })
-public class ServletConfig extends DelegatingWebMvcConfiguration {
+public class SpringMvcConfig extends DelegatingWebMvcConfiguration {
 	
 	@Autowired
 	private FreemarkerProperties freemarkerProperties;
