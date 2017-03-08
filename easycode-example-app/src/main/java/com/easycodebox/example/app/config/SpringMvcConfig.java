@@ -3,6 +3,7 @@ package com.easycodebox.example.app.config;
 import com.easycodebox.common.freemarker.FreemarkerGenerate;
 import com.easycodebox.common.freemarker.FreemarkerProperties;
 import com.easycodebox.common.web.springmvc.*;
+import com.easycodebox.example.core.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.context.annotation.ComponentScan.Filter;
@@ -51,6 +52,7 @@ public class SpringMvcConfig extends DelegatingWebMvcConfiguration {
 	 * 生成JS的配置文件
 	 */
 	@Bean(initMethod = "process")
+	@Profile("!" + Constants.INTEGRATION_TEST_KEY)
 	public FreemarkerGenerate freemarkerGenerate() {
 		FreemarkerGenerate generate = new FreemarkerGenerate();
 		generate.setFtlPath("/config-js.ftl");
