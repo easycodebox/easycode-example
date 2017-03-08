@@ -196,7 +196,7 @@ public class CoreConfig {
 	 * filters ==> 配置监控统计拦截的filters <p/>
 	 * connectionProperties ==> config.decrypt用于解密数据库密码 <p/>
 	 */
-	@Profile("!" + Constants.INTEGRATION_TEST_KEY)
+	//@Profile("!" + Constants.INTEGRATION_TEST_KEY)
 	@Bean(initMethod = "init", destroyMethod = "close")
 	public DruidDataSource dataSource() throws SQLException {
 		DruidDataSource dataSource = new DruidDataSource();
@@ -300,6 +300,7 @@ public class CoreConfig {
 	
 	/* =================================== 【ID转换器 - START】  ============================================== */
 	@Bean
+	@Profile("!" + Constants.INTEGRATION_TEST_KEY)
 	public DefaultUserIdConverter userIdConverter(UserWsService userWsService) {
 		DefaultUserIdConverter converter = new DefaultUserIdConverter(userWsService);
 		converter.setJdbcHandler(jdbcHandler());
