@@ -14,7 +14,6 @@ import com.easycodebox.common.lang.Symbol;
 import com.easycodebox.common.spring.ApplicationContextFactory;
 import com.easycodebox.common.spring.StringToEnumConverterFactory;
 import com.easycodebox.example.core.idconverter.DefaultUserIdConverter;
-import com.easycodebox.example.core.util.Constants;
 import com.easycodebox.jdbc.config.ConfigEntityBean;
 import com.easycodebox.jdbc.mybatis.*;
 import com.easycodebox.jdbc.mybatis.spring.DefaultSqlSessionFactoryBean;
@@ -300,7 +299,6 @@ public class CoreConfig {
 	
 	/* =================================== 【ID转换器 - START】  ============================================== */
 	@Bean
-	@Profile("!" + Constants.INTEGRATION_TEST_KEY)
 	public DefaultUserIdConverter userIdConverter(UserWsService userWsService) {
 		DefaultUserIdConverter converter = new DefaultUserIdConverter(userWsService);
 		converter.setJdbcHandler(jdbcHandler());
