@@ -1,11 +1,7 @@
 package com.easycodebox.example.core.config;
 
-import com.easycodebox.common.CommonProperties;
-import com.easycodebox.common.Named;
 import com.easycodebox.common.filter.SecurityContextFilter;
-import com.easycodebox.common.freemarker.FreemarkerProperties;
 import com.easycodebox.common.security.SecurityInfoHandler;
-import com.easycodebox.common.servlet.ServletContextAttrRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,17 +12,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class ServletConfig {
-	
-	/**
-	 * 配置Bean注册进ServletContext Attributes
-	 */
-	@Bean
-	public ServletContextAttrRegistry servletContextAttrRegistry(CommonProperties commonProperties,
-			FreemarkerProperties freemarkerProperties, CoreProperties coreProperties) {
-		ServletContextAttrRegistry registry = new ServletContextAttrRegistry();
-		registry.setNameds(new Named[] {commonProperties, freemarkerProperties, coreProperties});
-		return registry;
-	}
 	
 	/**
 	 * Security Info拦截器
