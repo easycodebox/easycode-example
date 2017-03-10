@@ -66,6 +66,7 @@ import java.util.*;
 		"classpath:login.properties"
 })
 @EnableTransactionManagement
+@SuppressWarnings("Duplicates")
 public class CoreConfig {
 	
 	/**
