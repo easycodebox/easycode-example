@@ -1,65 +1,40 @@
 package com.easycodebox.example.core.config;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.easycodebox.auth.model.enums.IdGeneratorEnum;
 import com.easycodebox.common.enums.DetailEnum;
 import com.easycodebox.common.enums.EnumClassFactory;
+import com.easycodebox.common.freemarker.ConfigurationPostProcessor;
 import com.easycodebox.common.idconverter.*;
 import com.easycodebox.common.idgenerator.DetailEnumIdGenTypeParser;
 import com.easycodebox.common.lang.Strings;
 import com.easycodebox.common.lang.Symbol;
 import com.easycodebox.common.spring.ApplicationContextFactory;
-import com.easycodebox.common.spring.StringToEnumConverterFactory;
 import com.easycodebox.example.core.idconverter.DefaultUserIdConverter;
 import com.easycodebox.jdbc.config.ConfigEntityBean;
 import com.easycodebox.jdbc.mybatis.*;
 import com.easycodebox.jdbc.mybatis.spring.DefaultSqlSessionFactoryBean;
-import com.easycodebox.jdbc.mybatis.spring.DefaultSqlSessionTemplate;
 import com.easycodebox.jdbc.mybatis.type.DetailEnumTypeHandler;
 import com.easycodebox.jdbc.support.DefaultJdbcHandler;
 import com.easycodebox.login.ws.UserWsService;
 import org.apache.ibatis.session.AutoMappingBehavior;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.*;
-import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.format.datetime.DateFormatter;
-import org.springframework.format.datetime.DateTimeFormatAnnotationFormatterFactory;
-import org.springframework.format.support.FormattingConversionServiceFactoryBean;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.sql.DataSource;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * core包Spring配置
  * @author WangXiaoJin
  */
 @Configuration
-@Import({PropertyConfig.class, CoreCacheConfig.class})
-@EnableAspectJAutoProxy
-@ComponentScan(
-		basePackages = {
-				"com.easycodebox.example.core",
-				"com.easycodebox.idgenerator.service"
-		},
-		excludeFilters = @Filter(Configuration.class)
-)
-@PropertySource(ignoreResourceNotFound = true, value = {
-		"classpath:core.properties",
-		"classpath:jdbc.properties",
-		"classpath:redis.properties",
-		"classpath:url.properties",
-		"classpath:mail.properties",
-		"classpath:login.properties"
-})
-@EnableTransactionManagement
+@ComponentScan(basePackages = "com.easycodebox.idgenerator.service")
 @SuppressWarnings("Duplicates")
 public class CoreConfig {
 	
@@ -77,15 +52,15 @@ public class CoreConfig {
 			"com.easycodebox.example.model.entity",
 			"com.easycodebox.idgenerator.entity"
 	};
-	/**
-	 * MyBatis Mapper文件base packages
-	 */
-	private static final String[] mapperPackages = {
-			"com.easycodebox.example.core.dao"
-	};
 	
-	@Autowired
-	private CoreProperties coreProperties;
+	/**
+	 * 增加自定义日期格式化工厂
+	 * @return
+	 */
+	@Bean
+	public static ConfigurationPostProcessor freemarkerCfgPostProcessor() {
+		return new ConfigurationPostProcessor();
+	}
 	
 	@Bean
 	public DetailEnumIdGenTypeParser idGenTypeParser() {
@@ -109,49 +84,14 @@ public class CoreConfig {
 		return bean;
 	}
 	
-	/**
-	 * 数据源配置 <p/>
-	 * initialSize/minIdle/maxActive ==> 配置初始化大小、最小、最大 <p/>
-	 * maxWait ==> 配置获取连接等待超时的时间 <p/>
-	 * timeBetweenEvictionRunsMillis ==> 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 <p/>
-	 * minEvictableIdleTimeMillis ==> 配置一个连接在池中最小生存的时间，单位是毫秒 <p/>
-	 * poolPreparedStatements/maxPoolPreparedStatementPerConnectionSize ==> 打开PSCache，并且指定每个连接上PSCache的大小 <p/>
-	 * filters ==> 配置监控统计拦截的filters <p/>
-	 * connectionProperties ==> config.decrypt用于解密数据库密码 <p/>
-	 */
 	//@Profile("!" + Constants.INTEGRATION_TEST_KEY)
-	@Bean(initMethod = "init", destroyMethod = "close")
-	public DruidDataSource dataSource() throws SQLException {
-		DruidDataSource dataSource = new DruidDataSource();
-		dataSource.setUrl(coreProperties.getJdbcUrl());
-		dataSource.setUsername(coreProperties.getJdbcUsername());
-		dataSource.setPassword(coreProperties.getJdbcPassword());
-		dataSource.setInitialSize(coreProperties.getJdbcInitialSize());
-		dataSource.setMinIdle(coreProperties.getJdbcMinIdle());
-		dataSource.setMaxActive(coreProperties.getJdbcMaxActive());
-		dataSource.setMaxWait(coreProperties.getJdbcMaxWait());
-		dataSource.setTimeBetweenEvictionRunsMillis(coreProperties.getJdbcTBERunsMillis());
-		dataSource.setMinEvictableIdleTimeMillis(coreProperties.getJdbcMinEvictIdleTime());
-		dataSource.setValidationQuery(coreProperties.getJdbcValidationQuery());
-		dataSource.setTestWhileIdle(coreProperties.getJdbcTestWhileIdle());
-		dataSource.setTestOnBorrow(coreProperties.getJdbcTestOnBorrow());
-		dataSource.setTestOnReturn(coreProperties.getJdbcTestOnReturn());
-		dataSource.setPoolPreparedStatements(coreProperties.getJdbcPreparedStatements());
-		dataSource.setMaxPoolPreparedStatementPerConnectionSize(coreProperties.getJdbcMaxPPSPCSize());
-		dataSource.setFilters(coreProperties.getJdbcPoolFilters());
-		dataSource.setConnectionProperties("config.decrypt=true");
-		return dataSource;
-	}
-	
 	@Bean
-	public DataSourceTransactionManager txManager() throws SQLException {
-		DataSourceTransactionManager manager = new DataSourceTransactionManager();
-		manager.setDataSource(dataSource());
-		return manager;
+	@ConfigurationProperties(prefix = "spring.datasource.druid")
+	public DataSource dataSource(DataSourceProperties properties) throws SQLException {
+		return properties.initializeDataSourceBuilder().build();
 	}
 	
 	/* ----------------------   配置MyBatis   ----------------------------------*/
-	
 	/**
 	 * autoMappingBehavior=FULL : 查询结果支持嵌套属性赋值,默认不支持（PARTIAL）
 	 */
@@ -172,30 +112,14 @@ public class CoreConfig {
 	}
 	
 	@Bean
-	public DefaultSqlSessionFactoryBean sqlSessionFactory() throws SQLException {
+	public DefaultSqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) throws SQLException {
 		DefaultSqlSessionFactoryBean factoryBean = new DefaultSqlSessionFactoryBean();
-		factoryBean.setDataSource(dataSource());
+		factoryBean.setDataSource(dataSource);
 		factoryBean.setConfiguration(ibatisConfiguration());
 		factoryBean.setTypeAliasesPackage(Strings.join(entityPackages, Symbol.COMMA));
 		factoryBean.setMapperLocations(new Resource[]{new ClassPathResource("CommonMapper.xml")});
 		factoryBean.setDynamicTypeHandlerRegister(detailEnumRegister());
 		return factoryBean;
-	}
-	
-	@Bean
-	public DefaultSqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) throws SQLException {
-		return new DefaultSqlSessionTemplate(sqlSessionFactory);
-	}
-	
-	/**
-	 * 因{@link MapperScannerConfigurer}实现了{@link BeanFactoryPostProcessor}接口且类上有{@link Configuration}，
-	 * 所以方法必须是{@code static}
-	 */
-	@Bean
-	public static MapperScannerConfigurer mapperScannerConfigurer() {
-		MapperScannerConfigurer configurer = new MapperScannerConfigurer();
-		configurer.setBasePackage(Strings.join(mapperPackages, Symbol.COMMA));
-		return configurer;
 	}
 	
 	/**
@@ -240,27 +164,4 @@ public class CoreConfig {
 	}
 	/* =================================== 【ID转换器 - END 】  ============================================== */
 	
-	@Bean
-	public FormattingConversionServiceFactoryBean conversionService() {
-		FormattingConversionServiceFactoryBean factoryBean = new FormattingConversionServiceFactoryBean();
-		factoryBean.setConverters(Collections.singleton(new StringToEnumConverterFactory()));
-		Set<Object> formatters = new HashSet<>();
-		//设置Date类型默认Formatter,全局有效。pattern属性：格式化的默认格式
-		DateFormatter dateFormatter = new DateFormatter();
-		dateFormatter.setPattern("yyyy-MM-dd HH:mm:ss");
-		formatters.add(dateFormatter);
-		/*
-		默认情况下FormattingConversionServiceFactoryBean已经注册了DateTimeFormatAnnotationFormatterFactory，
-		由registerDefaultFormatters属性控制，此属性默认为true。
-		这里再次注册DateTimeFormatAnnotationFormatterFactory的原因如下：
-		Spring可以对相同类型转换提供多个Converter，以List形式保存，后添加的Converter会被插入到最前面。而注册
-		默认Formatters的行为在上面DateFormatter之前，所以日期类型转换时，只会用上面的DateFormatter，无论你
-		有没有在属性上配置@DateTimeFormat注解，Spring都不会使用DateTimeFormatAnnotationFormatterFactory。
-		因此这里再次注册了DateTimeFormatAnnotationFormatterFactory，让它第一个检查，如果有@DateTimeFormat则
-		用它，没有则使用上面的DateFormatter。这是最简单的方法，不需要写代码就可以实现需求了。
-		*/
-		formatters.add(new DateTimeFormatAnnotationFormatterFactory());
-		factoryBean.setFormatters(formatters);
-		return factoryBean;
-	}
 }
