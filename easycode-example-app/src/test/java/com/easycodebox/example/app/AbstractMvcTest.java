@@ -1,6 +1,6 @@
 package com.easycodebox.example.app;
 
-import com.easycodebox.example.ExampleAppTestApplication;
+import com.easycodebox.example.TestApplication;
 import com.easycodebox.example.core.AbstractTest;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.web.context.WebApplicationContext;
  * @author WangXiaoJin
  */
 @SpringBootTest(
-		classes = ExampleAppTestApplication.class,
+		classes = TestApplication.class,
 		properties = {
 				"spring.config.name=application,core-application"
 		}
