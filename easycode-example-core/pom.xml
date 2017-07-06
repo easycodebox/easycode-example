@@ -23,6 +23,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.easycodebox</groupId>
+			<artifactId>easycode-spring-boot</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.easycodebox</groupId>
 			<artifactId>easycode-idgenerator</artifactId>
 		</dependency>
 		<!-- 第三方jar包 -->
