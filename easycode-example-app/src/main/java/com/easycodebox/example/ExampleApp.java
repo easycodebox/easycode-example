@@ -18,10 +18,11 @@ public class ExampleApp {
 	
 	public static void main(String[] args) throws Exception {
 		/* ----------------- 测试配置 BEGIN ------------------- */
-		//args = new String[] {
+		/*args = new String[] {
 				//"--logging.level.root=DEBUG",
-				//"--debug"
-		//};
+				//"--env=prod",
+				"--debug"
+		};*/
 		/* ----------------- 测试配置 END ------------------- */
 		Map<String, Object> props = PropertyConfig.defaultProperties();
 		props.put("spring.config.name", "application,core-application");
