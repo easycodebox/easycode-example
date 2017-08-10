@@ -3,6 +3,7 @@ package com.easycodebox.example;
 import com.easycodebox.example.core.config.PropertyConfig;
 import com.easycodebox.login.config.ShiroConfig;
 import com.easycodebox.login.config.WsClientConfig;
+import com.easycodebox.spring.boot.Application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
@@ -28,7 +29,7 @@ public class ExampleApp {
 		props.put("spring.config.name", "application,core-application");
 		SpringApplication application = new SpringApplication(ExampleApp.class);
 		application.setDefaultProperties(props);
-		application.run(args);
+		Application.run(application, args);
 	}
 	
 }
